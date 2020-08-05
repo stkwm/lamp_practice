@@ -4,11 +4,11 @@ require_once MODEL_PATH . 'functions.php';
 require_once MODEL_PATH . 'user.php';
 
 session_start();
-
+// ログインしていれば、ホーム画面へ移動
 if(is_logined() === true){
   redirect_to(HOME_URL);
 }
-
+// ユーザー登録で入力したPOSTの値を取得する
 $name = get_post('name');
 $password = get_post('password');
 $password_confirmation = get_post('password_confirmation');

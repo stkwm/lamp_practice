@@ -13,14 +13,14 @@ if(is_logined() === false){
 
 $db = get_db_connect();
 $user = get_login_user($db);
-
+// ユーザーのショッピングカートのデータを取得する
 $carts = get_user_carts($db, $user['user_id']);
-
+// エラーがある場合には、エラーメッセージをSETしてショッピングカートページへ移動する
 if(purchase_carts($db, $carts) === false){
   set_error('商品が購入できませんでした。');
   redirect_to(CART_URL);
 } 
-
+// ショッピングカートにある商品の合計金額を取得する
 $total_price = sum_carts($carts);
 
 include_once '../view/finish_view.php';

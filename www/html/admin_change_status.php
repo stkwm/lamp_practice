@@ -17,10 +17,10 @@ $user = get_login_user($db);
 if(is_admin($user) === false){
   redirect_to(LOGIN_URL);
 }
-
+// ステータス変更のボタンが押されたときのPOSTの値を取得する
 $item_id = get_post('item_id');
 $changes_to = get_post('changes_to');
-
+// DBに指定のitem_idの商品ステータスを変更する
 if($changes_to === 'open'){
   update_item_status($db, $item_id, ITEM_STATUS_OPEN);
   set_message('ステータスを変更しました。');
