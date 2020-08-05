@@ -134,6 +134,18 @@ function is_valid_upload_image($image){
   }
   return true;
 }
+// 文字列を引数として渡すと、特殊文字をHTMLエスケープを施した値を返す
 function h($str){
   return htmlspecialchars($str,ENT_QUOTES,'UTF-8');
+}
+
+function entity_assoc_array($assoc_array) {
+  foreach ($assoc_array as $key => $value) {
+    foreach ($value as $keys => $values) {
+      if (is_numeric($values) !== TRUE) {
+        $assoc_array[$key][$keys] = h($values);
+      }
+    }
+  }
+  return $assoc_array;
 }

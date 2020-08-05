@@ -14,5 +14,6 @@ $db = get_db_connect();
 $user = get_login_user($db);
 // ステータス公開の商品データを取得する
 $items = get_open_items($db);
-
+// 商品名をHTMLエンティティに変換
+// $items = entity_assoc_array($items);
 include_once VIEW_PATH . 'index_view.php';

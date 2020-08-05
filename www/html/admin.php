@@ -19,4 +19,8 @@ if(is_admin($user) === false){
 }
 // 全商品のデータを取得する
 $items = get_all_items($db);
+// var_dump($items);
+// 商品名をHTMLエンティティに変換
+// $items = entity_assoc_array($items);
+// var_dump($items);
 include_once VIEW_PATH . '/admin_view.php';
