@@ -15,7 +15,7 @@ function get_db_connect(){
   }
   return $dbh;
 }
-
+// データベースの読み込みの実行 fetch
 function fetch_query($db, $sql, $params = array()){
   try{
     $statement = $db->prepare($sql);
@@ -26,18 +26,18 @@ function fetch_query($db, $sql, $params = array()){
   }
   return false;
 }
-
+// データベースの読み込みの実行 fetchAll
 function fetch_all_query($db, $sql, $params = array()){
   try{
     $statement = $db->prepare($sql);
     $statement->execute($params);
-    return $statement->fetchAll();
+    return entity_assoc_array($statement->fetchAll());
   }catch(PDOException $e){
     set_error('データ取得に失敗しました。');
   }
   return false;
 }
-
+// データベースの書き込みの実行
 function execute_query($db, $sql, $params = array()){
   try{
     $statement = $db->prepare($sql);

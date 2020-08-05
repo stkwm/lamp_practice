@@ -17,10 +17,10 @@ $user = get_login_user($db);
 if(is_admin($user) === false){
   redirect_to(LOGIN_URL);
 }
-
+// 削除ボタンを押したときのPOSTの値を取得する
 $item_id = get_post('item_id');
 
-
+// DBから指定のitem_idの商品を削除する
 if(destroy_item($db, $item_id) === true){
   set_message('商品を削除しました。');
 } else {

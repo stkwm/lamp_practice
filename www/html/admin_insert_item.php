@@ -17,14 +17,14 @@ $user = get_login_user($db);
 if(is_admin($user) === false){
   redirect_to(LOGIN_URL);
 }
-
+// 新規登録ボタンを押した際のPOSTの値を取得する
 $name = get_post('name');
 $price = get_post('price');
 $status = get_post('status');
 $stock = get_post('stock');
 
 $image = get_file('image');
-
+// DBのに新商品を登録する
 if(regist_item($db, $name, $price, $stock, $status, $image)){
   set_message('商品を登録しました。');
 }else {
