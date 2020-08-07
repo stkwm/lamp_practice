@@ -149,3 +149,26 @@ function entity_assoc_array($assoc_array) {
   }
   return $assoc_array;
 }
+
+
+// トークンの生成
+function get_csrf_token(){
+  // get_random_string()はユーザー定義関数。ランダムな定数を取得する
+  $token = get_random_string(30);
+  // set_session()はユーザー定義関数。セッションに指定のデータを保存。function set_session($name, $value){ $_SESSION[$name] = $value;}
+  set_session('csrf_token', $token);
+  return $token;
+}
+
+// トークンのチェック
+// function get_session($name) セッションにデータが保存されていれば、そのデータを返す。
+// {if(isset($_SESSION[$name]) === true) {return $_SESSION[$name];} ;return '';}
+function is_valid_csrf_token($token){
+  if($token === '') {
+    return false;
+  }
+  // get_session()はユーザー定義関数
+  return $token === get_session('csrf_token');
+}
+
+// トークンの破棄・再生成

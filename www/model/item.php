@@ -87,7 +87,7 @@ function insert_item($db, $name, $price, $stock, $filename, $status){
 
   $params = array($name, $price, $stock, $filename, $status_value);
 
-  return execute_query($db, $sql);
+  return execute_query($db, $sql, $params);
 }
 // DBにある指定のitem=idの商品のステータスを変更する
 function update_item_status($db, $item_id, $status){
@@ -103,7 +103,7 @@ function update_item_status($db, $item_id, $status){
   
   $params = array($status, $item_id);
 
-  return execute_query($db, $sql);
+  return execute_query($db, $sql, $params);
 }
 // DBにある指定のitem=idの商品の在庫数を変更する
 function update_item_stock($db, $item_id, $stock){
@@ -148,7 +148,7 @@ function delete_item($db, $item_id){
 
   $params = array($item_id);
   
-  return execute_query($db, $sql);
+  return execute_query($db, $sql, $params);
 }
 
 
