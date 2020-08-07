@@ -21,9 +21,10 @@ function get_user_carts($db, $user_id){
     ON
       carts.item_id = items.item_id
     WHERE
-      carts.user_id = {$user_id}
+      carts.user_id = ?
   ";
-  return fetch_all_query($db, $sql);
+  $params = array($user_id);
+  return fetch_all_query($db, $sql, $params);
 }
 //  DBから指定のuser_idとitem_idのショッピングカートデータを取得する
 function get_user_cart($db, $user_id, $item_id){
@@ -45,12 +46,12 @@ function get_user_cart($db, $user_id, $item_id){
     ON
       carts.item_id = items.item_id
     WHERE
-      carts.user_id = {$user_id}
+      carts.user_id = ?
     AND
-      items.item_id = {$item_id}
+      items.item_id = ?
   ";
-
-  return fetch_query($db, $sql);
+  $params =array($user_id, $item_id);
+  return fetch_query($db, $sql, $params);
 
 }
 // ショッピングカートに商品を追加、もしくは商品の購入数を変更する
