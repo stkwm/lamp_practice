@@ -20,6 +20,7 @@ if(is_admin($user) === false){
 // 在庫数変更のボタンを押したときのPOSTの値を取得する
 $item_id = get_post('item_id');
 $stock = get_post('stock');
+
 // DBに指定のitem_idの商品在庫数の変更を行う
 if(update_item_stock($db, $item_id, $stock)){
   set_message('在庫数を変更しました。');

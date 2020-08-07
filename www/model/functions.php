@@ -170,8 +170,3 @@ function is_valid_csrf_token($token){
   // get_session()はユーザー定義関数
   return $token === get_session('csrf_token');
 }
-
-// トークンの破棄・再生成
-function reset_csrf_token() {
-  unset($_SESSION['csrf_token']);
-}
