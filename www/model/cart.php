@@ -21,9 +21,10 @@ function get_user_carts($db, $user_id){
     ON
       carts.item_id = items.item_id
     WHERE
-      carts.user_id = {$user_id}
+      carts.user_id = ?
   ";
-  return fetch_all_query($db, $sql);
+  $params = array($user_id);
+  return fetch_all_query($db, $sql, $params);
 }
 //  DBから指定のuser_idとitem_idのショッピングカートデータを取得する
 function get_user_cart($db, $user_id, $item_id){
@@ -45,12 +46,12 @@ function get_user_cart($db, $user_id, $item_id){
     ON
       carts.item_id = items.item_id
     WHERE
-      carts.user_id = {$user_id}
+      carts.user_id = ?
     AND
-      items.item_id = {$item_id}
+      items.item_id = ?
   ";
-
-  return fetch_query($db, $sql);
+  $params =array($user_id, $item_id);
+  return fetch_query($db, $sql, $params);
 
 }
 // ショッピングカートに商品を追加、もしくは商品の購入数を変更する
@@ -70,10 +71,11 @@ function insert_cart($db, $user_id, $item_id, $amount = 1){
         user_id,
         amount
       )
-    VALUES({$item_id}, {$user_id}, {$amount})
+    VALUES(?, ?, ?)
   ";
+  $params = array($item_id, $user_id, $amount);
 
-  return execute_query($db, $sql);
+  return execute_query($db, $sql, $params);
 }
 // cartにある商品の購入数を変更する
 function update_cart_amount($db, $cart_id, $amount){
@@ -81,12 +83,13 @@ function update_cart_amount($db, $cart_id, $amount){
     UPDATE
       carts
     SET
-      amount = {$amount}
+      amount = ?
     WHERE
-      cart_id = {$cart_id}
+      cart_id = ?
     LIMIT 1
   ";
-  return execute_query($db, $sql);
+  $params = array($amount, $cart_id);
+  return execute_query($db, $sql, $params);
 }
 // cartから商品を削除する
 function delete_cart($db, $cart_id){
@@ -94,11 +97,12 @@ function delete_cart($db, $cart_id){
     DELETE FROM
       carts
     WHERE
-      cart_id = {$cart_id}
+      cart_id = ?
     LIMIT 1
   ";
+  $params = array($cart_id);
 
-  return execute_query($db, $sql);
+  return execute_query($db, $sql, $params);
 }
 // 購入した場合に、在庫数を減らして、ユーザのショッピングカートから商品を削除する
 function purchase_carts($db, $carts){
@@ -123,10 +127,11 @@ function delete_user_carts($db, $user_id){
     DELETE FROM
       carts
     WHERE
-      user_id = {$user_id}
+      user_id = ?
   ";
+  $params = array($user_id);
 
-  execute_query($db, $sql);
+  execute_query($db, $sql, $params);
 }
 
 // ショッピングカートにある商品の合計金額を返す
