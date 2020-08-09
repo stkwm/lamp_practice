@@ -23,6 +23,13 @@ $price = get_post('price');
 $status = get_post('status');
 $stock = get_post('stock');
 
+// CSRF対策　トークンの照合
+$token = get_post('token');
+// var_dump($token);
+if (is_valid_csrf_token($token) === FALSE) {
+  redirect_to(LOGIN_URL);
+}
+
 $image = get_file('image');
 // DBのに新商品を登録する
 if(regist_item($db, $name, $price, $stock, $status, $image)){
@@ -30,6 +37,5 @@ if(regist_item($db, $name, $price, $stock, $status, $image)){
 }else {
   set_error('商品の登録に失敗しました。');
 }
-
 
 redirect_to(ADMIN_URL);

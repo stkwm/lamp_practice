@@ -171,7 +171,10 @@ function is_valid_csrf_token($token){
   return $token === get_session('csrf_token');
 }
 
+
+
 // トークンの破棄・再生成
 function reset_csrf_token() {
   unset($_SESSION['csrf_token']);
 }
+

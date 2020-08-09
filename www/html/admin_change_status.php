@@ -20,6 +20,14 @@ if(is_admin($user) === false){
 // ステータス変更のボタンが押されたときのPOSTの値を取得する
 $item_id = get_post('item_id');
 $changes_to = get_post('changes_to');
+
+// CSRF対策　トークンの照合
+$token = get_post('token');
+// var_dump($token);
+if (is_valid_csrf_token($token) === FALSE) {
+  redirect_to(LOGIN_URL);
+}
+
 // DBに指定のitem_idの商品ステータスを変更する
 if($changes_to === 'open'){
   update_item_status($db, $item_id, ITEM_STATUS_OPEN);
