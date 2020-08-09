@@ -22,7 +22,9 @@ if( $user === false){
 }
 
 set_message('ログインしました。');
+
 if ($user['type'] === USER_TYPE_ADMIN){
   redirect_to(ADMIN_URL);
 }
+
 redirect_to(HOME_URL);
