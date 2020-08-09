@@ -160,8 +160,8 @@ function get_csrf_token(){
   return $token;
 }
 
-// トークンのチェック
-// function get_session($name) セッションにデータが保存されていれば、そのデータを返す。
+// トークンのチェック→hiddenで送られた$tokenの値がセッションに保存されている値と同じであれば、TRUEを返す
+// function get_session($name)→セッションにデータが保存されていれば、そのデータを返す。
 // {if(isset($_SESSION[$name]) === true) {return $_SESSION[$name];} ;return '';}
 function is_valid_csrf_token($token){
   if($token === '') {
@@ -171,4 +171,10 @@ function is_valid_csrf_token($token){
   return $token === get_session('csrf_token');
 }
 
+
+
+// トークンの破棄・再生成
+function reset_csrf_token() {
+  unset($_SESSION['csrf_token']);
+}
 
