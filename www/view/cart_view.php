@@ -36,7 +36,7 @@
                 個
                 <input type="submit" value="変更" class="btn btn-secondary">
                 <input type="hidden" name="cart_id" value="<?php print($cart['cart_id']); ?>">
-                <input type="hidden" name="token" value="<?php $token?>">
+                <input type="hidden" name="token" value="<?php print $token; ?>">
 
               </form>
             </td>

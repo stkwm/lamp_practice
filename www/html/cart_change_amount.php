@@ -16,7 +16,7 @@ $user = get_login_user($db);
 // ショッピングカートの購入数の変更ボタンを押したときのPOSTの値を取得する
 $cart_id = get_post('cart_id');
 $amount = get_post('amount');
-
+// var_dump($cart_id);
 // CSRF対策　トークンの照合
 $token = get_post('token');
 // var_dump($token);
