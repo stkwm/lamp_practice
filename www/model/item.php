@@ -16,10 +16,11 @@ function get_item($db, $item_id){
     FROM
       items
     WHERE
-      item_id = {$item_id}
+      item_id = ?
   ";
 
-  return fetch_query($db, $sql);
+  $params = array($item_id);
+  return fetch_query($db, $sql, $params);
 }
 // DBの商品の詳細を読み込み、ステータス別の商品のデータをすべて入手する
 function get_items($db, $is_open = false){
