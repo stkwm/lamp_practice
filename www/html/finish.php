@@ -38,7 +38,6 @@ if(purchase_carts($db, $carts) === false){
   redirect_to(CART_URL);
 } 
 
-
 commit_transaction($db);
 
 // ショッピングカートにある商品の合計金額を取得する
