@@ -25,15 +25,10 @@ if (is_valid_csrf_token($token) === FALSE) {
 }
 
 // 購入履歴テーブルにデータを挿入する
-if(history_insert($db, $carts) === false) {
-  set_error('商品が購入できませんでした。。');
-  redirect_to(CART_URL);
-}
+history_insert($db, $user_id['user_id']);
+
 // 購入履歴詳細テーブルにデータを挿入する
-if(history_details($db, $user_id['user_id']) === false){
-  set_error('商品が購入できませんでした。。。');
-  redirect_to(CART_URL);
-}
+history_details($db, $carts)
 
 // 在庫数から購入個数を引いてカートテーブルから指定のユーザーIDのデータを削除する。エラーがある場合には、エラーメッセージをSETしてショッピングカートページへ移動する
 if(purchase_carts($db, $carts) === false){

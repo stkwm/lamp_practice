@@ -42,15 +42,15 @@ function fetch_all_query($db, $sql, $params = array()){
 function execute_query($db, $sql, $params = array()){
   try{
     $statement = $db->prepare($sql);
-    foreach ($params as $param) {
-      $param_id = array_search($param, $params) + 1;
-        if(is_numeric($param)) {
-          $statement->bindvalue($param_id, $param, PDO::PARAM_INT);
-        } else {
-          $statement->bindvalue($param_id, $param, PDO::PARAM_STR);
-        }
-      }
-    return $statement->execute();
+    // foreach ($params as $param) {
+    //   $param_id = array_search($param, $params) + 1;
+    //     if(is_numeric($param)) {
+    //       $statement->bindvalue($param_id, $param, PDO::PARAM_INT);
+    //     } else {
+    //       $statement->bindvalue($param_id, $param, PDO::PARAM_STR);
+    //     }
+    //   }
+    return $statement->execute($params);
   }catch(PDOException $e){
     set_error('更新に失敗しました。');
   }
