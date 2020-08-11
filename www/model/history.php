@@ -54,9 +54,9 @@ function get_all_history($db, $user_id) {
 function get_history_details($db, $history_id) {
   $sql = "
     SELECT
-      history_details.history_id
-      history_details.price
-      history_details.amount
+      history_details.history_id,
+      history_details.price,
+      history_details.amount,
       items.name
     FROM
       history_details
