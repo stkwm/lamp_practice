@@ -41,6 +41,8 @@ function fetch_all_query($db, $sql, $params = array()){
 }
 // データベースの実行(DBへの書き込み用)
 // 「execute」メソッドを実行するSQL文に引数がある場合(後で値を指定するために「?」や名前付きパラメータを指定した場合)、「execute」メソッドの引数に、値を配列の形で指定します。
+// $params = array()　は初期値を与えている
+// execute($params)はbindvalueの部分と同じことをしている
 function execute_query($db, $sql, $params = array()){
   try{
     $statement = $db->prepare($sql);

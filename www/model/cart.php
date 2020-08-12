@@ -50,7 +50,8 @@ function get_user_cart($db, $user_id, $item_id){
     AND
       items.item_id = ?
   ";
-  $params = array($user_id, $item_id);
+
+  $params =array($user_id, $item_id);
   return fetch_query($db, $sql, $params);
 
 }
