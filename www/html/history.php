@@ -23,9 +23,9 @@ $user = get_login_user($db);
 
 // 履歴テーブルからデータを取得する（管理者用とユーザー用）
 if(is_admin($user) === true){
-    $history = get_all_history($db);
+    $history_orders = get_all_history($db);
 } else {
-    $history = get_history($db, $user['user_id']);
+    $history_orders = get_history($db, $user['user_id']);
 }
 
 include_once VIEW_PATH . '/history_view.php';
