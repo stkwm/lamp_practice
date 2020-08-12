@@ -45,7 +45,7 @@ function set_session($name, $value){
 function set_error($error){
   $_SESSION['__errors'][] = $error;
 }
-// セッションに保存したエラーメッセージを取得する
+// セッションに保存したエラーメッセージを取得し、エラーに関するセッションのデータをリセットする
 function get_errors(){
   $errors = get_session('__errors');
   if($errors === ''){

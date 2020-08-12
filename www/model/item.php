@@ -18,6 +18,7 @@ function get_item($db, $item_id){
     WHERE
       item_id = ?
   ";
+
   $params = array($item_id);
   return fetch_query($db, $sql, $params);
 }

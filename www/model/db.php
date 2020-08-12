@@ -1,4 +1,6 @@
 <?php
+require_once MODEL_PATH . 'functions.php';
+
 
 function get_db_connect(){
   // MySQL用のDSN文字列
@@ -54,7 +56,15 @@ function execute_query($db, $sql, $params = array()){
     //   }
     return $statement->execute($params);
   }catch(PDOException $e){
-    set_error('更新に失敗しました。');
+    set_error('更新に失敗しました。'.$sql);
   }
   return false;
 }
+// この時点でエラーがなければ、コミット。あれば、ロールバック
+function commit_transaction($db) {
+  if(has_error() === true) {
+    $db->rollback();
+  } 
+  $db->commit();
+}
+  
