@@ -28,4 +28,5 @@ if(is_admin($user) === true){
     $history = get_history($db, $user['user_id']);
 }
 
+include_once VIEW_PATH . '/history_view.php';
 ?>

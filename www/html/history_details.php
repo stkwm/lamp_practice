@@ -27,4 +27,5 @@ if (is_valid_csrf_token($token) === FALSE) {
 
 $history_details = get_history_details($db, $history_id);
 
+include_once VIEW_PATH . '/history_details_view.php';
 ?>
