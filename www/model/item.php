@@ -219,7 +219,7 @@ function is_valid_item_status($status){
 
 
 // 人気商品順に商品データを入手する（購入数が多い順）
-function ranking_items($db){
+function get_ranking_items($db){
   $sql = "
     SELECT
       name,

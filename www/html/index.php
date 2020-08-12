@@ -19,4 +19,8 @@ $user = get_login_user($db);
 $items = get_open_items($db);
 // 商品名をHTMLエンティティに変換
 // $items = entity_assoc_array($items);
+
+// 商品の人気ランキングデータを取得
+$ranking_items = get_ranking_items($db);
+
 include_once VIEW_PATH . 'index_view.php';
