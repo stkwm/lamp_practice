@@ -62,7 +62,8 @@ function execute_query($db, $sql, $params = array()){
 function commit_transaction($db) {
   if(has_error() === true) {
     $db->rollback();
-  } 
-  $db->commit();
+  } else {
+    $db->commit();
+  }
 }
   
