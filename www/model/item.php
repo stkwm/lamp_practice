@@ -216,3 +216,28 @@ function is_valid_item_status($status){
   }
   return $is_valid;
 }
+
+
+// 人気商品順に商品データを入手する（購入数が多い順）
+function ranking_items($db){
+  $sql = "
+    SELECT
+      name,
+      image,
+      items.price,
+      SUM(amount) AS total_amount
+    FROM
+      items 
+    INNER JOIN 
+      history_details
+    ON
+      items.item_id = history_details.item_id
+    GROUP BY
+      name, image, items.price
+    ORDER BY
+      total_amount DESC
+    LIMIT
+      3
+    "
+  return fetch_all_query($db, $sql);
+}

@@ -42,6 +42,9 @@
       <?php } ?>
       </div>
     </div>
+    <div class="ranking-items">
+      
+    </div>
   </div>
   
 </body>
