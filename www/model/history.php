@@ -28,7 +28,7 @@ function get_history($db, $user_id) {
 }
 
 // すべての履歴テーブルの読み込み（ユーザー用）
-function get_all_history($db, $user_id) {
+function get_all_history($db) {
     $sql = "
       SELECT 
         history.history_id,
