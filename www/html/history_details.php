@@ -18,6 +18,7 @@ $db = get_db_connect();
 $user = get_login_user($db);
   
 $history_id = get_post('history_id');
+// var_dump('history_id');
 // CSRF対策　トークンの照合
 $token = get_post('token');
 // var_dump($token);
@@ -25,7 +26,10 @@ if (is_valid_csrf_token($token) === FALSE) {
   redirect_to(LOGIN_URL);
 }
 
+$history_specific_order = get_specific_history($db, $history_id);
+// var_dump($history_specific_order);
 $history_details = get_history_details($db, $history_id);
+// var_dump($history_details);
 
-include_once VIEW_PATH . '/history_details_view.php';
+include_once VIEW_PATH . 'history_details_view.php';
 ?>

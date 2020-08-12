@@ -27,8 +27,8 @@
             <td><?php print $history_order['created'];?></td>
             <td><?php print(number_format($history_order['total_price']));?>円</td>
             <td>
-              <form>
-                <input type="submit" vlaue="購入明細" class="btn btn-secondary">
+              <form method="post" action="history_details.php">
+                <input type="submit" value="購入明細" class="btn btn-secondary">
                 <input type="hidden" name="history_id" value="<?php print $history_order['history-id'];?>">
                 <input type="hidden" name="token" value="<?php print $token;?>">
               </form>

@@ -49,6 +49,28 @@ function get_all_history($db) {
       return fetch_all_query($db, $sql);
   }
 
+// 指定のhistory_idのデータを読み込む
+function get_specific_history($db, $history_id){
+  $sql = "
+      SELECT 
+        history.history_id,
+        created,
+        SUM(price * amount) AS total_price
+      FROM
+        history
+      INNER JOIN
+        history_details
+      ON
+        history.history_id = history_details.history_id
+      WHERE
+        history.history_id = ?
+      GROUP BY
+        history.history_id
+      ";
+      $params = array($history_id);
+      return fetch_all_query($db, $sql, $params);
+}
+
 
 // 履歴詳細テーブルの読み込み
 function get_history_details($db, $history_id) {
