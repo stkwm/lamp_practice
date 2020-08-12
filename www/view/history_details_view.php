@@ -49,7 +49,7 @@
       </table>
     <?php } else { ?>
       <p>エラーが発生しました。</p>
-    <?php } ?>>
+    <?php } ?>
   </div>
 </body>
 </html>

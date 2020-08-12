@@ -20,13 +20,13 @@ $token = get_csrf_token();
 $db = get_db_connect();
 // $userは連想配列
 $user = get_login_user($db);
-
+// var_dump($user['user_id']);
 // 履歴テーブルからデータを取得する（管理者用とユーザー用）
 if(is_admin($user) === true){
     $history_orders = get_all_history($db);
 } else {
     $history_orders = get_history($db, $user['user_id']);
 }
-
+// var_dump($history_orders);
 include_once VIEW_PATH . '/history_view.php';
 ?>

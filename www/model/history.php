@@ -50,7 +50,7 @@ function get_all_history($db) {
   }
 
 // 指定のhistory_idのデータを読み込む
-function get_specific_history($db, $history_id){
+function get_specific_history($db, $history_id) {
   $sql = "
       SELECT 
         history.history_id,
