@@ -1,0 +1,10 @@
+table {
+    border-collapse: collapse;
+    width: 960px;
+}
+th {
+    border: solid 1px silver;
+}
+tr {
+    border-bottom: solid 1px silver;
+}
