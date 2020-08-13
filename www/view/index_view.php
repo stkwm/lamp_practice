@@ -56,6 +56,12 @@
       <?php foreach($ranking_items as $ranking_item) { ?>
       <figure class="ranking-body">
         <figcaption><?php print $ranking_num?>位</figcaption>
+        <figcaption>
+          <?php print($ranking_item['name']); ?>
+        </figcaption>
+        <figcaption>
+          <?php print(number_format($ranking_item['price'])); ?>円
+        </figcaption>
         <img class="ranking-img" src="<?php print(IMAGE_PATH . $ranking_item['image']); ?>">
         <figcaption>
           <?php print($ranking_item['name']); ?>

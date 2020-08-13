@@ -251,6 +251,8 @@ function get_ranking_items($db){
       history_details
     ON
       items.item_id = history_details.item_id
+    WHERE
+      status = 1
     GROUP BY
       name, image, items.price
     ORDER BY
