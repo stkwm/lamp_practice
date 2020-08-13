@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
   <?php include VIEW_PATH . 'templates/head.php'; ?>
-  
   <title>購入履歴</title>
   <link rel="stylesheet" href="<?php print(STYLESHEET_PATH . 'history.css'); ?>">
 </head>
@@ -12,7 +11,7 @@
   <div>
     <?php include VIEW_PATH . 'templates/messages.php'; ?>
     <?php if (count($history_orders) > 0) { ?>
-      <table>
+      <table class="table table-bordered text-center">
         <thead class="thead-light">
           <tr>
             <th>注文番号</th>
