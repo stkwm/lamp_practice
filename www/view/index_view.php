@@ -12,6 +12,14 @@
 
   <div class="container">
     <h1>商品一覧</h1>
+    <form class="sorting" method="get" action="index.php">
+      <select name="items_order">
+        <option value="new" selected>新着順</option>
+        <option value="low_price">価格の安い順</option>
+        <option value="high_price">価格の高い順</option>
+      </select>
+      <input type="submit" value="並び替え">
+    </form>
     <?php include VIEW_PATH . 'templates/messages.php'; ?>
 
     <div class="card-deck">
@@ -42,8 +50,20 @@
       <?php } ?>
       </div>
     </div>
+
+    <h2 class="ranking_title">人気ランキング</h2>
     <div class="ranking-items">
-      
+      <?php foreach($ranking_items as $ranking_item) { ?>
+      <figure class="ranking-body">
+        <figcaption><?php print $ranking_num?>位</figcaption>
+        <img class="ranking-img" src="<?php print(IMAGE_PATH . $ranking_item['image']); ?>">
+        <figcaption>
+          <?php print($ranking_item['name']); ?>
+          <?php print(number_format($ranking_item['price'])); ?>円
+        </figcaption>
+      </figure>
+      <?php $ranking_num++; ?>
+      <?php } ?>
     </div>
   </div>
   

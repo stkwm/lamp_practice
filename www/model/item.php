@@ -23,7 +23,7 @@ function get_item($db, $item_id){
   return fetch_query($db, $sql, $params);
 }
 // DBの商品の詳細を読み込み、ステータス別の商品のデータをすべて入手する
-function get_items($db, $is_open = false){
+function get_items($db, $is_open = false, $items_order = ''){
   $sql = '
     SELECT
       item_id, 
@@ -40,6 +40,25 @@ function get_items($db, $is_open = false){
       WHERE status = 1
     ';
   }
+  if($items_order === 'new'){
+    $sql .= '
+      ORDER BY
+        created
+      DESC
+    ';
+  } else if($items_order === 'high_price'){
+    $sql .= '
+      ORDER BY
+        price
+      DESC
+    ';
+  } else if($items_order === 'low_price'){
+    $sql .= '
+      ORDER BY
+        price
+      ASC
+    ';
+  }
 
   return fetch_all_query($db, $sql);
 }
@@ -48,8 +67,8 @@ function get_all_items($db){
   return get_items($db);
 }
 // DBの商品を読み込み、ステータスが公開のデータをすべて取得する
-function get_open_items($db){
-  return get_items($db, true);
+function get_open_items($db, $items_order){
+  return get_items($db, true, $items_order);
 }
 // 管理ページでの商品の登録
 function regist_item($db, $name, $price, $stock, $status, $image){
@@ -238,6 +257,6 @@ function get_ranking_items($db){
       total_amount DESC
     LIMIT
       3
-    "
+    ";
   return fetch_all_query($db, $sql);
 }
