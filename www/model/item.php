@@ -243,10 +243,7 @@ function get_view_page_items($items, $page){
   $items_sum = count($items);
 // ページの最大数
   $max_page = ceil($items_sum / MAX);
-// $pageの初期値を1に設定する
-  if(isset($page) !== TRUE){
-    $page = 1;
-  }
+
 // そのページで表示する最初のデータのkeyを取得
   $start = MAX * ($page - 1);
 // 表示するページ内に必要なデータを取得

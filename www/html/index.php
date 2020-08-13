@@ -19,12 +19,12 @@ $user = get_login_user($db);
 $items_order = get_get('items_order');
 // ステータス公開の商品データを取得する
 
-// 指定のページの数を取得 初期値を1に設定
+// 指定のページの数を取得 初期値を1に設定 　　　　((int)数値型の初期値は０)
 $page = (int) get_get('page');
-if(isset($page) === false){
+if($page === 0){
   $page = 1;
 }
-
+// var_dump($page);
 $items = get_open_items($db, $items_order);
 // 商品名をHTMLエンティティに変換
 // $items = entity_assoc_array($items);

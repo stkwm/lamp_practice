@@ -8,7 +8,9 @@ form.sorting {
 
 .page {
   display: flex;
-  margin-left: 225px;
+  width: 60%;
+  margin-left: auto;
+  margin-top: 25px;
 }
 .now-page {
   display: block;

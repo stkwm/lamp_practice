@@ -82,10 +82,6 @@
           <?php print(number_format($ranking_item['price'])); ?>円
         </figcaption>
         <img class="ranking-img" src="<?php print(IMAGE_PATH . $ranking_item['image']); ?>">
-        <figcaption>
-          <?php print($ranking_item['name']); ?>
-          <?php print(number_format($ranking_item['price'])); ?>円
-        </figcaption>
       </figure>
       <?php $ranking_num++; ?>
       <?php } ?>
