@@ -24,7 +24,7 @@
 
     <div class="card-deck">
       <div class="row">
-      <?php foreach($items as $item){ ?>
+      <?php foreach($view_page_items as $item){ ?>
         <div class="col-6 item">
           <div class="card h-100 text-center">
             <div class="card-header">
@@ -50,6 +50,25 @@
       <?php } ?>
       </div>
     </div>
+<!--ページ移動-->
+    <div class="page">
+      <?php if ($page > 1) { ?>
+        <a href="index.php?page=<?php print ($page-1); ?>">前のページへ</a>
+      <?php } ?>
+<!--$_GET[]の値は文字列で出てくる-->
+      <?php for ($i = 1; $i <= $max_page; $i++) { ?> 
+        <?php if ($i === $page) { ?>
+          <span class="now-page"><?php print $page; ?></span>
+        <?php } else { ?>
+          <a href="index.php?page=<?php print $i; ?>"><?php print $i; ?></a>
+        <?php } ?>
+      <?php } ?>
+
+      <?php if ($page < $max_page) { ?> 
+        <a href="index.php?page=<?php print ($page+1); ?>">次のページへ</a>
+      <?php } ?>
+    </div>
+
 
     <h2 class="ranking_title">人気ランキング</h2>
     <div class="ranking-items">

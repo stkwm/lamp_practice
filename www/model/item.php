@@ -237,6 +237,24 @@ function is_valid_item_status($status){
 }
 
 
+// ページング
+function get_view_page_items($items, $page){
+// データの要素の総数
+  $items_sum = count($items);
+// ページの最大数
+  $max_page = ceil($items_sum / MAX);
+// $pageの初期値を1に設定する
+  if(isset($page) !== TRUE){
+    $page = 1;
+  }
+// そのページで表示する最初のデータのkeyを取得
+  $start = MAX * ($page - 1);
+// 表示するページ内に必要なデータを取得
+  return array_slice($items, $start, MAX, true);
+}
+
+
+
 // 人気商品順に商品データを入手する（購入数が多い順）
 function get_ranking_items($db){
   $sql = "
