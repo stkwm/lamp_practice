@@ -13,7 +13,7 @@
   <h1>購入明細</h1>
   <div>
     <?php include VIEW_PATH . 'templates/messages.php'; ?>
-    <table>
+    <table class="table table-bordered text-center">
       <tr>
         <th>注文番号</th>
         <th>購入日時</th>
@@ -27,7 +27,7 @@
     </table>
     </div>
     <?php if (count($history_details) > 0) { ?>
-      <table>
+      <table class="table table-bordered text-center">
         <thead class="thead-light">
           <tr>
             <th>商品名</th>

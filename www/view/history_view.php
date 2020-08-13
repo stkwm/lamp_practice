@@ -11,7 +11,7 @@
   <div>
     <?php include VIEW_PATH . 'templates/messages.php'; ?>
     <?php if (count($history_orders) > 0) { ?>
-      <table>
+      <table class="table table-bordered text-center">
         <thead class="thead-light">
           <tr>
             <th>注文番号</th>
