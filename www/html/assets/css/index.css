@@ -2,3 +2,46 @@
   margin-top: 10px;
 }
 
+form.sorting {
+  text-align: right;
+}
+
+.page {
+  display: flex;
+  width: 60%;
+  margin-left: auto;
+  margin-top: 25px;
+}
+.now-page {
+  display: block;
+  margin-left: 15px;
+  padding: 4px 10px 4px 10px;
+  background-color: black;
+  color: white;
+}
+.page a {
+  background-color: #eeeeee;
+  display: block;
+  margin-left: 15px;
+  padding: 4px 10px 4px 10px;
+}
+.page a:hover { 
+  background-color: black;
+  color: white;
+}
+
+.ranking_title {
+  margin-top: 30px;
+}
+
+.ranking-items {
+  display: flex;
+}
+
+.ranking-img {
+  max-height: 200px;
+}
+
+.ranking-body {
+  margin: 20px;
+}

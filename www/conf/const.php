@@ -50,3 +50,6 @@ define('PERMITTED_IMAGE_TYPES', array(
   IMAGETYPE_JPEG => 'jpg',
   IMAGETYPE_PNG => 'png',
 ));
+
+// １ページに表示する商品の数の最大数
+define('MAX','8');
